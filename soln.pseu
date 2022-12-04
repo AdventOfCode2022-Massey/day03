@@ -1,0 +1,10 @@
+%ident total letters line char
+total <- 0
+for each line
+    letters <- empty hash set
+    for char in first half of line
+        insert char in letters
+    for char in second half of line
+        if char in letters
+            total <- total + priority of char
+print total
