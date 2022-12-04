@@ -8,6 +8,7 @@
 use std::collections::HashSet;
 
 use aoc::*;
+use itertools::Itertools;
 
 fn compartment(chars: &[char]) -> HashSet<char> {
     chars.iter().copied().collect()
@@ -34,14 +35,32 @@ fn main() {
                 assert!(nline & 1 == 0, "uneven knapsack");
                 let left = compartment(&line[..nline / 2]);
                 let right = compartment(&line[nline / 2..]);
-                let misplaced = left.intersection(&right);
-                let mut elems = misplaced.into_iter();
+                let mut elems = left.intersection(&right);
                 let e = *elems.next().expect("undamaged knapsack");
                 assert!(elems.next().is_none(), "misdamaged knapsack");
                 total += priority(e);
             }
             println!("{total}");
         }
-        Part2 => todo!(),
+        Part2 => {
+            let total = input_lines()
+                .chunks(3)
+                .into_iter()
+                .map(|lines| {
+                    let mut elems = lines
+                        .map(|line| {
+                            let line: Vec<char> = line.chars().collect();
+                            compartment(&line)
+                        })
+                        .reduce(|a, e| a.intersection(&e).copied().collect())
+                        .expect("no badge lines")
+                        .into_iter();
+                    let e = elems.next().expect("no badge");
+                    assert!(elems.next().is_none(), "multiple badges");
+                    priority(e)
+                })
+                .sum::<u32>();
+            println!("{total}");
+        }
     }
 }

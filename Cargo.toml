@@ -17,5 +17,8 @@ edition = "2021"
 name = "day03"
 path = "soln.rs"
 
+[dependencies]
+itertools = "0.10.5"
+
 [dependencies.aoc]
 workspace = true
