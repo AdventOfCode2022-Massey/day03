@@ -1,0 +1,21 @@
+# This program is licensed under the "MIT License".
+# Please see the file LICENSE in this distribution
+# for license terms.
+
+[package]
+name = "day03"
+version = "0.1.0"
+authors = ["Bart Massey <bart@cs.pdx.edu>"]
+publish = false
+description = "Solution to Advent of Code 2022 Day 3."
+repository = "http://github.com/AdventOfCode2022-Massey/day03"
+readme = "README.md"
+license = "MIT"
+edition = "2021"
+
+[[bin]]
+name = "day03"
+path = "soln.rs"
+
+[dependencies.aoc]
+workspace = true
