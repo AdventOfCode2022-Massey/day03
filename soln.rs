@@ -49,10 +49,13 @@ fn main() {
                 .map(|lines| {
                     let mut elems = lines
                         .map(|line| {
-                            let line: Vec<char> = line.chars().collect();
+                            let line: Vec<char> =
+                                line.chars().collect();
                             compartment(&line)
                         })
-                        .reduce(|a, e| a.intersection(&e).copied().collect())
+                        .reduce(|a, e| {
+                            a.intersection(&e).copied().collect()
+                        })
                         .expect("no badge lines")
                         .into_iter();
                     let e = elems.next().expect("no badge");
