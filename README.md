@@ -3,7 +3,11 @@ Bart Massey
 
 ---
 
-*Your notes here.*
+We used a solution that takes advantage of set
+operations. There was a dumb bug computing priorities that
+we ultimately debugged using the test data provided with the
+problem: it was causing an underflow panic. The second part
+gratuitously used `itertools` to do the grouping.
 
 ---
 
